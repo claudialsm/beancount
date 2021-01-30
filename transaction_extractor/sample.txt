@@ -1,0 +1,50 @@
+;; -*- mode: beancount; coding: utf-8; fill-column: 400; -*-
+option "title" "My Personal Ledger"
+option "operating_currency" "GBP"
+
+1867-01-01 commodity GBP
+  name: "Pound Sterling"
+  asset-class: "cash"
+
+
+Type : Country : Institution : Account : SubAccount
+Assets:US:BofA:Savings       ; Bank of America “Savings” account
+Assets:CA:RBC:Checking       ; Royal Bank of Canada “Checking” account
+Liabilities:US:Amex:Platinum ; American Express Platinum credit card
+Liabilities:CA:RBC:Mortgage  ; Mortgage loan account at RBC
+Income:US:ETrade:Interest    ; Interest payments in E*Trade account
+Income:US:Acme:Salary        ; Salary income from ACME corp.
+
+Income:US:ETrade:Interest    ; Interest income from cash deposits
+Income:US:ETrade:Dividends   ; Dividends received in this account
+Income:US:ETrade:PnL         ; Capital gains or losses from trades
+
+2020-08-20 event "employer" "EY"
+2020-08-20 open Income:UK:EY:Salary          GBP; "Regular Pay"
+
+2020-08-20 open Expenses:Taxes:TY2014:US:IncomeTax  GBP
+2020-08-20 open Expenses:Taxes:TY2014:US:NationalInsurance   GBP
+
+2012-12-13 open Expenses:Health:Life:GroupTermLife  GBP; "Life Ins."
+2012-12-13 open Expenses:Health:Dental:Insurance    GBP; "Dental"
+2012-12-13 open Expenses:Health:Medical:Insurance   GBP; "Medical"
+2012-12-13 open Expenses:Health:Vision:Insurance    GBP; "Vision"
+2012-12-13 open Expenses:Internet:Reimbursement     GBP; "Internet Reim"
+2012-12-13 open Expenses:Transportation:PreTax      GBP; "Transit PreTax"
+
+2014-01-01 open Assets:Checking
+2014-01-01 open Equity:Opening-Balances
+
+2014-01-02 * "Deposit"
+  Assets:Checking           100.00 GBP
+  Equity:Opening-Balances
+
+2000-05-28 open Assets:CA:BofA:Checking  GBP
+
+2000-05-28 pad Assets:CA:BofA:Checking Equity:Opening-Balances
+
+2014-06-28 * "Paid credit card bill"
+  Assets:CA:BofA:Checking                     -700.00 GBP
+  Liabilities:US:Amex:Platinum                 700.00 GBP
+
+2014-07-01 balance Assets:CA:BofA:Checking    1256.35 GBP
